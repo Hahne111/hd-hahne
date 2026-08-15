@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modul-Demo – Hahne Digital</title>
+<meta name="description" content="Beispielansichten aller Firmenmodule von Hahne Digital – so sieht Ihr System im Alltag aus.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.hahne-digital.de/demo.html">
+<meta name="theme-color" content="#f4f6f7">
+<link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/i18n-texte.js"></script>
+<script src="assets/site-config.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<nav class="nav" aria-label="Hauptnavigation">
+  <div class="wrap navin">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="17" width="6" height="30" rx="3"/><rect x="34" y="17" width="6" height="30" rx="3"/><path d="M40 19 a12.5 12.5 0 0 1 0 26" fill="none" stroke-width="6" stroke-linecap="round"/><rect class="brand-bar" x="20" y="29" width="16" height="6" rx="3"/></svg></span>HAHNE <span>DIGITAL</span></a>
+    <div class="links" id="navlinks">
+      <a href="index.html#leistungen" data-t="nav.leistungen">Leistungen</a>
+      <a href="module.html" data-t="nav.module">Module &amp; Preise</a>
+      <a href="demo.html" aria-current="page">Demos</a>
+      <a href="index.html#berater" data-t="nav.check">Projekt-Check</a>
+      <a href="index.html#kontakt" data-t="nav.kontakt">Kontakt</a>
+    </div>
+    <a class="btn btn-primary" href="index.html#kontakt" data-t="nav.cta">Projekt starten</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="navlinks">
+      <span class="visually-hidden">Menü öffnen</span><i aria-hidden="true"></i>
+    </button>
+  </div>
+</nav>
+
+<main id="main" class="demo-seite">
+  <div class="wrap">
+    <div class="demo-kopf">
+      <div>
+        <p class="kicker">Beispielansicht</p>
+        <h1 id="demoTitel">Modul-Demos</h1>
+        <p class="demo-untertitel" id="demoUnter">Wählen Sie links ein Modul und probieren Sie es aus: Einträge anlegen, Status ändern, suchen und sortieren. Alle Daten sind erfunden.</p>
+      </div>
+      <div class="demo-preisbox" id="demoPreis" hidden></div>
+    </div>
+
+    <div class="demo-layout">
+      <aside class="demo-liste" aria-label="Alle Module">
+        <div class="demo-suche">
+          <label class="visually-hidden" for="demoSuche">Modul suchen</label>
+          <input id="demoSuche" type="search" placeholder="Modul suchen …">
+        </div>
+        <div id="demoNavi"></div>
+      </aside>
+
+      <div class="demo-buehne">
+        <div class="demo-fenster gross" id="demoFenster">
+          <div class="demo-leiste">
+            <i></i><i></i><i></i>
+            <span id="demoFensterName">Bitte Modul wählen</span>
+          </div>
+          <div class="demo-app" id="demoApp"></div>
+        </div>
+
+        <div class="demo-erklaerung" id="demoErklaerung"></div>
+
+        <div class="demo-aktionen" id="demoNext" hidden>
+          <a class="btn btn-primary" id="demoVormerken" href="#">Modul ins Angebot übernehmen</a>
+          <a class="btn btn-ghost" href="module.html#katalog">Alle Module &amp; Preise</a>
+          <a class="btn btn-ghost" href="index.html#kontakt">Frage dazu stellen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <span class="foot-brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="17" width="6" height="30" rx="3"/><rect x="34" y="17" width="6" height="30" rx="3"/><path d="M40 19 a12.5 12.5 0 0 1 0 26" fill="none" stroke-width="6" stroke-linecap="round"/><rect class="brand-bar" x="20" y="29" width="16" height="6" rx="3"/></svg></span><strong style="letter-spacing:.08em">HAHNE DIGITAL</strong></span><br>
+      Internetpräsenzen · Shops · Firmenmodule · KI<br>
+      <span style="font-size:.85rem">© <span data-year>2026</span> <span data-site="firma">Hahne Digital</span>, <span data-site="ort">Eckernförde</span></span>
+    </div>
+    <div class="foot-social">
+      <p class="foot-social-titel" data-social-titel data-t="footer.folgen">Demnächst hier</p>
+      <div class="social-leiste" data-social></div>
+      <p class="foot-social-hinweis" data-social-hinweis></p>
+    </div>
+    <nav class="footlinks" aria-label="Rechtliches">
+      <a href="module.html" data-t="footer.module">Module &amp; Preise</a>
+      <a href="demo.html">Demos</a>
+      <a href="anleitung.html">Anleitungen</a>
+      <a href="impressum.html" data-t="footer.impressum">Impressum</a>
+      <a href="agb.html" data-t="footer.agb">AGB</a>
+      <a href="datenschutz.html" data-t="footer.datenschutz">Datenschutz</a>
+      <a href="index.html#kontakt" data-t="nav.kontakt">Kontakt</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="totop" id="totop" type="button"><span class="visually-hidden">Nach oben</span><span aria-hidden="true">↑</span></button>
+
+<script src="assets/modules.js"></script>
+<script src="assets/module-demos.js"></script>
+<script src="assets/demo-daten.js"></script>
+<script src="assets/demo-seite.js"></script>
+<script src="assets/assistant-data.js"></script>
+<script src="assets/assistant-lernen.js"></script>
+<script src="assets/privatsphaere.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/assistant.js"></script>
+<script src="assets/i18n.js"></script>
+</body>
+</html>
