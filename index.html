@@ -3,32 +3,502 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Hahne Digital entwickelt hochwertige Internetpräsenzen, Shopsysteme, Firmenmodule und KI-Lösungen für Unternehmen.">
-<title>Hahne Digital – Digitale Systeme für Unternehmen</title>
-<link rel="stylesheet" href="css/style.css">
+<title>Hahne Digital – Internetpräsenzen, Shopsysteme, Firmenmodule &amp; KI</title>
+<meta name="description" content="Hahne Digital entwickelt Internetpräsenzen, Shopsysteme, individuelle Firmenmodule und KI-Lösungen für Unternehmen – individuell statt Baukasten, modular erweiterbar.">
+<meta name="author" content="Björn Hahne">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.hahne-digital.de/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Hahne Digital">
+<meta property="og:title" content="Hahne Digital – Wir bauen keine Websites. Wir bauen Systeme.">
+<meta property="og:description" content="Internetpräsenzen, Shopsysteme, Firmenmodule und KI-Lösungen für Unternehmen.">
+<meta property="og:url" content="https://www.hahne-digital.de/">
+<meta property="og:image" content="https://www.hahne-digital.de/assets/logo/og-bild.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f4f6f7">
+<link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/i18n-texte.js"></script>
+<script src="assets/site-config.js"></script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"Hahne Digital",
+  "description":"Internetpräsenzen, Shopsysteme, individuelle Firmenmodule und KI-Lösungen für Unternehmen.",
+  "url":"https://www.hahne-digital.de/",
+  "areaServed":"DE",
+  "address":{"@type":"PostalAddress","addressLocality":"Eckernförde","addressCountry":"DE"},
+  "founder":{"@type":"Person","name":"Björn Hahne"}
+}
+</script>
 </head>
 <body>
-<nav class="nav"><div class="wrap navin"><a class="brand" href="#start"><span class="brand-mark">HD</span>HAHNE <span>DIGITAL</span></a><div class="links"><a href="#leistungen">Leistungen</a><a href="#pakete">Pakete</a><a href="#module">Module</a><a href="#berater">Projekt-Check</a><a href="#kontakt">Kontakt</a></div><a class="btn btn-primary" href="#berater">Projekt starten</a></div></nav>
+<a class="skip" href="#main">Zum Inhalt springen</a>
 
-<header id="start" class="hero"><div class="wrap hero-grid"><div class="reveal"><div class="eyebrow">Digitale Lösungen für Unternehmen</div><h1>Wir bauen keine Websites. <em>Wir bauen Systeme.</em></h1><p class="lead">Internetpräsenzen, Shopsysteme und individuelle Firmenmodule – hochwertig gestaltet, sauber strukturiert und darauf ausgelegt, Abläufe zu vereinfachen, Vertrauen aufzubauen und Kunden besser zu führen.</p><div class="hero-actions"><a class="btn btn-primary" href="#berater">Kostenlosen Projekt-Check starten</a><a class="btn btn-ghost" href="#module">Module ansehen</a></div><div class="proof"><div class="proof-item"><b>Individuell</b><span>statt Baukasten-Look</span></div><div class="proof-item"><b>Modular</b><span>später erweiterbar</span></div><div class="proof-item"><b>Business-first</b><span>Funktion vor Spielerei</span></div></div></div>
-<div class="visual reveal"><div class="frame"><div class="screen"><div class="screen-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="dash"><div class="sidebar"><div class="side-line active"></div><div class="side-line"></div><div class="side-line"></div><div class="side-line"></div><div class="side-line"></div></div><div class="mainpane"><div class="metric-row"><div class="mini"><small>Anfragen</small><b>28</b></div><div class="mini"><small>Projekte</small><b>12</b></div><div class="mini"><small>Quote</small><b>43%</b></div></div><div class="chart"><svg viewBox="0 0 500 160" preserveAspectRatio="none"><polyline points="0,132 65,118 120,126 180,92 240,101 310,66 375,74 440,34 500,42" fill="none" stroke="#d7b56d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="table"><div class="row"><b>Neue Projektanfrage</b><span>Website + CRM</span><span class="status">Heute</span></div><div class="row"><b>Angebot freigegeben</b><span>Shop-System</span><span class="status">Aktiv</span></div><div class="row"><b>Modul erweitert</b><span>Serviceportal</span><span class="status">Fertig</span></div></div></div></div></div></div><div class="floating"><small>Digitale Plattform</small><b>Ein System. Mehr Wirkung.</b></div></div></div></header>
+<nav class="nav" aria-label="Hauptnavigation">
+  <div class="wrap navin">
+    <a class="brand" href="#start"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="17" width="6" height="30" rx="3"/><rect x="34" y="17" width="6" height="30" rx="3"/><path d="M40 19 a12.5 12.5 0 0 1 0 26" fill="none" stroke-width="6" stroke-linecap="round"/><rect class="brand-bar" x="20" y="29" width="16" height="6" rx="3"/></svg></span>HAHNE <span>DIGITAL</span></a>
+    <div class="links" id="navlinks">
+      <a href="#leistungen" data-t="nav.leistungen">Leistungen</a>
+      <a href="#ablauf" data-t="nav.ablauf">Ablauf</a>
+      <a href="#pakete" data-t="nav.pakete">Pakete</a>
+      <a href="#server-hinweis" data-t="nav.server">Server</a>
+      <a href="module.html" data-t="nav.module">Module &amp; Preise</a>
+      <a href="demo.html">Demos</a>
+      <a href="anleitung.html">Anleitungen</a>
+      <a href="#berater" data-t="nav.check">Projekt-Check</a>
+      <a href="#kontakt" data-t="nav.kontakt">Kontakt</a>
+    </div>
+    <a class="btn btn-primary" href="#berater" data-t="nav.cta">Projekt starten</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="navlinks">
+      <span class="visually-hidden">Menü öffnen</span><i aria-hidden="true"></i>
+    </button>
+  </div>
+</nav>
 
-<main>
-<section id="leistungen"><div class="wrap"><div class="section-head reveal"><div><div class="kicker">Leistungen</div><h2>Digitalisierung mit Substanz.</h2></div><p>Die Website ist nur die sichtbare Oberfläche. Der eigentliche Wert entsteht dort, wo Design, Prozesse, Daten und Kundenführung sauber zusammenspielen.</p></div><div class="services"><article class="service reveal"><div class="num">01</div><h3>Internetpräsenzen</h3><p>Hochwertige Unternehmensseiten mit klarer Nutzerführung, responsivem Design, Kontaktstrecken, Terminlogik und einer Positionierung, die professionell wirkt.</p><span class="more">Mehr Wirkung →</span></article><article class="service reveal"><div class="num">02</div><h3>Shopsysteme</h3><p>Produktwelten, Checkout, Bestellprozesse, Rechnungslogik und individuelle Produktkonfigurationen – übersichtlich für Kunden und effizient für Ihr Unternehmen.</p><span class="more">Mehr verkaufen →</span></article><article class="service reveal"><div class="num">03</div><h3>Firmenmodule</h3><p>CRM, Angebots- und Rechnungssysteme, Terminverwaltung, Serviceprozesse, Auftragsstatus oder interne Dashboards – exakt dort, wo Standardsoftware zu starr wird.</p><span class="more">Abläufe vereinfachen →</span></article><article class="service reveal"><div class="num">04</div><h3>KI-Lösungen</h3><p>Intelligente Kundenassistenten, Wissenssysteme, Produktempfehlungen und interne KI-Werkzeuge. Nicht als Showeffekt, sondern mit einem klaren betrieblichen Nutzen.</p><span class="more">KI sinnvoll einsetzen →</span></article></div></div></section>
+<header id="start" class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <p class="eyebrow" data-t="hero.eyebrow">Digitale Lösungen für Unternehmen</p>
+      <h1><span data-t="hero.titel1">Wir bauen keine Websites.</span> <em data-t="hero.titel2">Wir bauen Systeme.</em></h1>
+      <p class="lead" data-t="hero.lead">Internetpräsenzen, Shopsysteme und individuelle Firmenmodule – hochwertig gestaltet, sauber strukturiert und darauf ausgelegt, Abläufe zu vereinfachen, Vertrauen aufzubauen und Kunden besser zu führen.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#berater" data-t="hero.cta1">Kostenlosen Projekt-Check starten</a>
+        <a class="btn btn-ghost" href="module.html" data-t="hero.cta2">Alle Module &amp; Preise</a>
+      </div>
+      <div class="proof">
+        <div class="proof-item"><b data-t="proof1a">Individuell</b><span data-t="proof1b">statt Baukasten-Look</span></div>
+        <div class="proof-item"><b data-t="proof2a">Modular</b><span data-t="proof2b">später erweiterbar</span></div>
+        <div class="proof-item"><b data-t="proof3a">Business-first</b><span data-t="proof3b">Funktion vor Spielerei</span></div>
+      </div>
+    </div>
 
-<div class="statement"><div class="wrap"><blockquote class="reveal">„Gute Digitalisierung beginnt nicht mit Software. Sie beginnt mit der Frage: <em>Was soll einfacher, schneller oder besser werden?</em>“</blockquote></div></div>
+    <div class="visual reveal" aria-hidden="true">
+      <div class="frame">
+        <div class="screen">
+          <div class="screen-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+          <div class="dash">
+            <div class="sidebar">
+              <div class="side-line active"></div><div class="side-line"></div><div class="side-line"></div>
+              <div class="side-line"></div><div class="side-line"></div>
+            </div>
+            <div class="mainpane">
+              <div class="metric-row">
+                <div class="mini"><small>Anfragen</small><b>28</b></div>
+                <div class="mini"><small>Projekte</small><b>12</b></div>
+                <div class="mini"><small>Quote</small><b>43 %</b></div>
+              </div>
+              <div class="chart">
+                <svg viewBox="0 0 500 160" preserveAspectRatio="none" role="presentation">
+                  <polyline points="0,132 65,118 120,126 180,92 240,101 310,66 375,74 440,34 500,42"
+                    fill="none" stroke="#0e6f7a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="table">
+                <div class="row"><b>Neue Projektanfrage</b><span>Website + CRM</span><span class="status">Heute</span></div>
+                <div class="row"><b>Angebot freigegeben</b><span>Shop-System</span><span class="status">Aktiv</span></div>
+                <div class="row"><b>Modul erweitert</b><span>Serviceportal</span><span class="status">Fertig</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="floating"><small>Digitale Plattform</small><b>Ein System. Mehr Wirkung.</b></div>
+    </div>
+  </div>
+</header>
 
-<section id="pakete"><div class="wrap"><div class="section-head reveal"><div><div class="kicker">Pakete</div><h2>Ein klarer Einstieg.</h2></div><p>Keine künstlich aufgeblähten Pakete. Der Umfang wird am tatsächlichen Nutzen ausgerichtet und kann später modular erweitert werden.</p></div><div class="packages"><article class="package reveal"><div class="label">Start</div><h3>Business Website</h3><div class="price">ab 990 € <small>einmalig</small></div><p>Für Unternehmen, die professionell auftreten und Anfragen besser führen möchten.</p><ul class="checklist"><li>individuelles Premium-Design</li><li>responsive Umsetzung</li><li>Leistungs- und Kontaktbereiche</li><li>Grundoptimierung für Suchmaschinen</li><li>technische Basis für Erweiterungen</li></ul><a class="btn btn-ghost" href="#kontakt">Projekt anfragen</a></article><article class="package featured reveal"><div class="label">Empfohlen</div><h3>Business System</h3><div class="price">ab 2.490 € <small>einmalig</small></div><p>Website plus individuell abgestimmtes Firmenmodul für einen echten Prozessvorteil.</p><ul class="checklist"><li>alles aus Business Website</li><li>CRM, Termin-, Service- oder Auftragsmodul</li><li>individuelle Datenlogik</li><li>automatisierte Abläufe</li><li>skalierbare Systemstruktur</li></ul><a class="btn btn-primary" href="#berater">Projekt-Check starten</a></article><article class="package reveal"><div class="label">Individuell</div><h3>Digital Platform</h3><div class="price">nach Bedarf</div><p>Für Unternehmen, die mehrere Bereiche zu einer durchgängigen Plattform verbinden möchten.</p><ul class="checklist"><li>Website oder Shop</li><li>mehrere Firmenmodule</li><li>Kunden- oder Mitarbeiterportal</li><li>KI-Integration</li><li>individuelle Schnittstellen</li></ul><a class="btn btn-ghost" href="#kontakt">Konzept besprechen</a></article></div></div></section>
+<main id="main">
 
-<section id="module"><div class="wrap"><div class="section-head reveal"><div><div class="kicker">Live-Demos</div><h2>So kann Ihr System arbeiten.</h2></div><p>Die Beispiele zeigen, wie sich typische Firmenprozesse in übersichtliche, browserbasierte Module übersetzen lassen.</p></div><div class="demo-wrap"><div class="tabs reveal"><button class="tab active" data-demo="crm">CRM / Kundenverwaltung<span>Kunden, Vorgänge, Wiedervorlagen</span></button><button class="tab" data-demo="invoice">Angebote & Rechnungen<span>Status, Dokumente, Zahlung</span></button><button class="tab" data-demo="service">Service & Termine<span>Planung, Wartung, Nachverfolgung</span></button><button class="tab" data-demo="shop">Shop & Bestellungen<span>Produkte, Orders, Versand</span></button></div><div class="demo-screen reveal" id="demoScreen"></div></div></div></section>
+<section id="leistungen" aria-labelledby="leistungen-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><p class="kicker" data-t="leist.kicker">Leistungen</p><h2 id="leistungen-h" data-t="leist.titel">Digitalisierung mit Substanz.</h2></div>
+      <p data-t="leist.lead">Die Website ist nur die sichtbare Oberfläche. Der eigentliche Wert entsteht dort, wo Design, Prozesse, Daten und Kundenführung sauber zusammenspielen.</p>
+    </div>
+    <div class="services">
+      <article class="service reveal">
+        <div class="tagmark" aria-hidden="true">◗</div>
+        <h3 data-t="leist1.t">Internetpräsenzen</h3>
+        <p>Hochwertige Unternehmensseiten mit klarer Nutzerführung, responsivem Design, Kontaktstrecken, Terminlogik und einer Positionierung, die professionell wirkt.</p>
+        <p class="more">Mehr Wirkung</p>
+      </article>
+      <article class="service reveal">
+        <div class="tagmark" aria-hidden="true">▤</div>
+        <h3 data-t="leist2.t">Shopsysteme</h3>
+        <p>Produktwelten, Checkout, Bestellprozesse, Rechnungslogik und individuelle Produktkonfigurationen – übersichtlich für Kunden und effizient für Ihr Unternehmen.</p>
+        <p class="more">Mehr verkaufen</p>
+      </article>
+      <article class="service reveal">
+        <div class="tagmark" aria-hidden="true">▦</div>
+        <h3 data-t="leist3.t">Firmenmodule</h3>
+        <p>CRM, Angebots- und Rechnungssysteme, Terminverwaltung mit Kalender-Synchronisierung, Fahrtenbuch, Serviceprozesse, Auftragsstatus oder interne Dashboards – exakt dort, wo Standardsoftware zu starr wird. Auf Wunsch auf einem eigenen Server, den wir vermitteln und einrichten.</p>
+        <p class="more">Abläufe vereinfachen</p>
+      </article>
+      <article class="service reveal">
+        <div class="tagmark" aria-hidden="true">◎</div>
+        <h3 data-t="leist4.t">Sichtbarkeit bei Google</h3>
+        <p>Eine Website nützt nur, wenn sie gefunden wird. Wir melden Ihre Seite bei den Suchmaschinen an, richten Ihr Google Unternehmensprofil ein und legen die Grundlagen, damit Sie in Ihrer Region auftauchen.</p>
+        <p class="more">Gefunden werden</p>
+      </article>
+      <article class="service reveal">
+        <div class="tagmark" aria-hidden="true">✦</div>
+        <h3 data-t="leist5.t">KI-Lösungen</h3>
+        <p>Intelligente Kundenassistenten, Wissenssysteme, Produktempfehlungen und interne KI-Werkzeuge. Nicht als Showeffekt, sondern mit klarem betrieblichem Nutzen.</p>
+        <p class="more">KI sinnvoll einsetzen</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-<section id="berater"><div class="wrap"><div class="advisor reveal"><div class="advisor-grid"><div><div class="kicker">Projekt-Check</div><h3>Welche Lösung passt zu Ihrem Unternehmen?</h3><p>Vier kurze Fragen reichen für eine erste Einordnung. Entscheidend ist nicht, welche Software Sie möchten, sondern welches Problem gelöst werden soll.</p></div><div><div class="progress"><span id="prog"></span></div><div id="questions"><div class="question active" data-q="1"><b>1. Was ist Ihr wichtigstes Ziel?</b><div class="options"><button class="option" data-val="web">Professioneller Webauftritt</button><button class="option" data-val="shop">Produkte online verkaufen</button><button class="option" data-val="process">Interne Abläufe digitalisieren</button><button class="option" data-val="ai">KI sinnvoll integrieren</button></div></div><div class="question" data-q="2"><b>2. Wie individuell soll die Lösung sein?</b><div class="options"><button class="option" data-val="standard">Klare Standardfunktionen reichen</button><button class="option" data-val="custom">Individuelle Funktionen sind wichtig</button><button class="option" data-val="system">Mehrere Bereiche verbinden</button><button class="option" data-val="open">Noch offen</button></div></div><div class="question" data-q="3"><b>3. Welche Funktion ist besonders wichtig?</b><div class="options"><button class="option" data-val="contact">Anfragen / Termine</button><button class="option" data-val="crm">Kunden / Aufträge</button><button class="option" data-val="commerce">Bestellungen / Rechnungen</button><button class="option" data-val="assistant">KI / Wissen</button></div></div><div class="question" data-q="4"><b>4. Wie möchten Sie starten?</b><div class="options"><button class="option" data-val="small">Klein starten, später erweitern</button><button class="option" data-val="full">Direkt komplett aufbauen</button><button class="option" data-val="mvp">Erst eine Pilotversion</button><button class="option" data-val="consult">Zuerst Konzept & Beratung</button></div></div></div><div class="result" id="result"><b>Erste Einschätzung</b><div class="resultbox" id="resultText"></div><div class="hero-actions"><a href="#kontakt" class="btn btn-primary">Als Anfrage übernehmen</a><button class="btn btn-ghost" id="restart" type="button">Neu starten</button></div></div></div></div></div></div></section>
+<section id="domain-teaser" aria-labelledby="domteaser-h">
+  <div class="wrap">
+    <div class="teaser reveal">
+      <div>
+        <p class="kicker">Wunschdomain</p>
+        <h2 id="domteaser-h">Ist Ihre Wunschadresse noch frei?</h2>
+        <p>Prüfen Sie es direkt hier. Ist die Adresse zu haben, merken wir sie für Ihr Angebot vor und richten sie mit ein.</p>
+        <div class="dom-box dom-box-schlank" data-domain-suche></div>
+      </div>
+      <div class="teaser-preis">
+        <b>10–30 €</b>
+        <span>Registrierung im Jahr,<br>direkt beim Anbieter</span>
+        <a class="btn btn-ghost" href="module.html#domain">Worauf achten?</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="kontakt"><div class="wrap"><div class="contact"><div class="panel reveal"><div class="kicker">Kontakt</div><h2>Beschreiben Sie nicht die Software. Beschreiben Sie das Problem.</h2><p style="color:var(--muted)">Daraus lässt sich wesentlich besser ableiten, welche Lösung technisch und wirtschaftlich sinnvoll ist.</p><ul class="checklist"><li>unverbindliche Ersteinschätzung</li><li>klare Projektstruktur</li><li>keine unnötigen Funktionen</li><li>später erweiterbar</li></ul></div><form class="panel reveal" id="contactForm"><div class="field"><label for="name">Name / Firma</label><input id="name" required placeholder="Max Mustermann / Muster GmbH"></div><div class="field"><label for="email">E-Mail</label><input id="email" type="email" required placeholder="name@firma.de"></div><div class="field"><label for="type">Projektart</label><select id="type"><option>Internetpräsenz</option><option>Shopsystem</option><option>Firmenmodul</option><option>KI-Lösung</option><option>Kombination / noch offen</option></select></div><div class="field"><label for="message">Was möchten Sie lösen?</label><textarea id="message" required placeholder="Unternehmen, Ziel, aktueller Ablauf und gewünschte Verbesserung."></textarea></div><button class="btn btn-primary" type="submit">Projektanfrage vorbereiten</button><p class="note">Für echten Formularversand muss noch ein Backend oder E-Mail-Dienst angebunden werden.</p></form></div></div></section>
+<section id="sichtbar-teaser" aria-labelledby="teaser-h">
+  <div class="wrap">
+    <div class="teaser reveal">
+      <div>
+        <p class="kicker">Häufig unterschätzt</p>
+        <h2 id="teaser-h">Was nützt die schönste Website, wenn niemand sie findet?</h2>
+        <p>Wer heute einen Betrieb sucht, tippt ihn ins Handy – und ruft einen der ersten Treffer an. Eine neue Website steht dort zunächst nicht: Suchmaschinen kennen sie schlicht noch nicht. Wir melden Ihre Seite an, richten Ihr Google Unternehmensprofil ein und sorgen dafür, dass Sie zu den Begriffen auftauchen, die Ihre Kunden tatsächlich eingeben.</p>
+      </div>
+      <div class="teaser-preis">
+        <b>499 €</b>
+        <span>einmalig, netto</span>
+        <a class="btn btn-primary" href="module.html#sichtbarkeit">Warum das wichtig ist</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="statement">
+  <div class="wrap">
+    <blockquote class="reveal">„Gute Digitalisierung beginnt nicht mit Software. Sie beginnt mit der Frage: <em>Was soll einfacher, schneller oder besser werden?</em>“</blockquote>
+  </div>
+</div>
+
+<section id="ablauf" aria-labelledby="ablauf-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><p class="kicker" data-t="ablauf.kicker">So läuft es ab</p><h2 id="ablauf-h" data-t="ablauf.titel">In vier Schritten zum fertigen System.</h2></div>
+      <p>Sie müssen sich vorab nicht in Technik einarbeiten. Wir beginnen bei Ihrem Arbeitsalltag und erklären jeden Schritt in normaler Sprache – Fachbegriffe übersetzen wir, statt sie vorauszusetzen.</p>
+    </div>
+    <div class="erklaer" style="grid-template-columns:repeat(4,1fr)">
+      <article class="erklaer-karte reveal">
+        <div class="erklaer-nr" aria-hidden="true">1</div>
+        <h3 data-t="ablauf1.t">Gespräch</h3>
+        <p>Sie erzählen, was im Alltag hakt. Kein Lastenheft nötig – ein Telefonat von 20 Minuten reicht für den Anfang. Kostenlos und unverbindlich.</p>
+      </article>
+      <article class="erklaer-karte reveal">
+        <div class="erklaer-nr" aria-hidden="true">2</div>
+        <h3 data-t="ablauf2.t">Angebot</h3>
+        <p>Sie bekommen einen Festpreis mit klarer Liste, was enthalten ist und was nicht. Keine Stundenzettel, keine Überraschung am Ende.</p>
+      </article>
+      <article class="erklaer-karte reveal">
+        <div class="erklaer-nr" aria-hidden="true">3</div>
+        <h3 data-t="ablauf3.t">Umsetzung</h3>
+        <p>Wir bauen und zeigen zwischendurch den Stand. Sie sagen, was passt und was nicht – ändern lässt sich alles, solange es noch im Bau ist.</p>
+      </article>
+      <article class="erklaer-karte reveal">
+        <div class="erklaer-nr" aria-hidden="true">4</div>
+        <h3 data-t="ablauf4.t">Einweisung</h3>
+        <p>Wir übernehmen Ihre vorhandenen Daten und zeigen dem Team, wie es geht. Danach bleiben wir erreichbar – auch für die Frage, die man sich nicht zu stellen traut.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="pakete" aria-labelledby="pakete-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><p class="kicker" data-t="pakete.kicker">Pakete</p><h2 id="pakete-h" data-t="pakete.titel">Ein klarer Einstieg.</h2></div>
+      <p>Keine künstlich aufgeblähten Pakete. Der Umfang wird am tatsächlichen Nutzen ausgerichtet und kann später modular erweitert werden.</p>
+    </div>
+    <div class="packages">
+      <article class="package reveal">
+        <p class="label" data-t="p1.label">Start</p>
+        <h3>Business Website</h3>
+        <p class="price">ab 990 € <small>einmalig</small></p>
+        <p data-t="p1.desc">Für Unternehmen, die professionell auftreten und Anfragen besser führen möchten.</p>
+        <ul class="checklist">
+          <li>individuelles Premium-Design</li>
+          <li>responsive Umsetzung</li>
+          <li>Leistungs- und Kontaktbereiche</li>
+          <li>Grundoptimierung für Suchmaschinen</li>
+          <li>technische Basis für Erweiterungen</li>
+        </ul>
+        <a class="btn btn-ghost" href="#kontakt" data-t="btn.anfragen">Projekt anfragen</a>
+      </article>
+      <article class="package featured reveal">
+        <p class="label" data-t="p2.label">Empfohlen</p>
+        <h3>Business System</h3>
+        <p class="price">ab 2.490 € <small>einmalig</small></p>
+        <p data-t="p2.desc">Website plus individuell abgestimmtes Firmenmodul für einen echten Prozessvorteil.</p>
+        <ul class="checklist">
+          <li>alles aus Business Website</li>
+          <li>CRM-, Termin-, Service- oder Auftragsmodul</li>
+          <li>individuelle Datenlogik</li>
+          <li>automatisierte Abläufe</li>
+          <li>skalierbare Systemstruktur</li>
+        </ul>
+        <a class="btn btn-primary" href="#berater" data-t="btn.check">Projekt-Check starten</a>
+      </article>
+      <article class="package reveal">
+        <p class="label" data-t="p3.label">Individuell</p>
+        <h3>Digital Platform</h3>
+        <p class="price">nach Bedarf</p>
+        <p data-t="p3.desc">Für Unternehmen, die mehrere Bereiche zu einer durchgängigen Plattform verbinden möchten.</p>
+        <ul class="checklist">
+          <li>Website oder Shop</li>
+          <li>mehrere Firmenmodule</li>
+          <li>Kunden- oder Mitarbeiterportal</li>
+          <li>KI-Integration</li>
+          <li>individuelle Schnittstellen</li>
+        </ul>
+        <a class="btn btn-ghost" href="#kontakt" data-t="btn.konzept">Konzept besprechen</a>
+      </article>
+    </div>
+    <p class="price-note reveal" data-site="preishinweis">Alle Preise verstehen sich netto zzgl. der gesetzlichen Umsatzsteuer.</p>
+  </div>
+</section>
+
+<section id="server-hinweis" aria-labelledby="serverhinweis-h">
+  <div class="wrap">
+    <div class="teaser teaser-server reveal">
+      <div class="teaser-preis teaser-preis-links">
+        <b>899 €</b>
+        <span>einmalig, netto</span>
+        <a class="btn btn-ghost" href="module.html#server">Wann sich das lohnt</a>
+      </div>
+      <div>
+        <p class="kicker">Eigener Server</p>
+        <h2 id="serverhinweis-h">Ihr System auf einer Maschine, die Ihnen allein gehört.</h2>
+        <p>Normales Hosting teilen sich viele Kunden. Sobald echte Betriebsdaten im Spiel sind – Kunden, Aufträge, Arbeitszeiten – oder mehrere Module zusammenarbeiten, wird ein eigener Server sinnvoll. Wir klären den Bedarf, vermitteln einen passenden Anbieter in Deutschland und richten alles betriebsbereit ein: Absicherung, Zertifikate, Postfächer, Sicherungen und Überwachung.</p>
+        <p class="teaser-fein"><b>Der Vertrag läuft auf Ihren Namen.</b> Zugang und Daten gehören Ihnen, die Servermiete zahlen Sie direkt an den Anbieter – meist 15 bis 60 € im Monat. Wir verdienen an der Einrichtung, nicht an einem Aufschlag.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="module" aria-labelledby="module-h">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><p class="kicker">Beispielmodule</p><h2 id="module-h">So kann Ihr System arbeiten.</h2></div>
+      <div>
+        <p>Damit Sie nicht raten müssen: Diese Ansichten zeigen echte Bildschirme mit erfundenen Beispieldaten – und auf der Demoseite können Sie jedes Modul selbst bedienen. Klicken Sie sich links durch die Bereiche – so ungefähr würde Ihr System im Alltag aussehen.</p>
+        <p style="margin-top:18px"><a class="btn btn-primary" href="demo.html">Alle 47 Module ausprobieren</a> <a class="btn btn-ghost" href="anleitung.html">Anleitungen</a> <a class="btn btn-ghost" href="module.html">Preise</a></p>
+      </div>
+    </div>
+    <div class="demo-wrap">
+      <div class="tabs reveal" role="tablist" aria-label="Beispielmodule" aria-orientation="vertical">
+        <button class="tab" role="tab" id="tab-crm" aria-controls="demoScreen" aria-selected="true" data-demo="crm" type="button">CRM / Kundenverwaltung<span>Kunden, Vorgänge, Wiedervorlagen</span></button>
+        <button class="tab" role="tab" id="tab-invoice" aria-controls="demoScreen" aria-selected="false" tabindex="-1" data-demo="invoice" type="button">Angebote &amp; Rechnungen<span>Status, Dokumente, Zahlung</span></button>
+        <button class="tab" role="tab" id="tab-service" aria-controls="demoScreen" aria-selected="false" tabindex="-1" data-demo="service" type="button">Service &amp; Termine<span>Planung, Wartung, Nachverfolgung</span></button>
+        <button class="tab" role="tab" id="tab-kalender" aria-controls="demoScreen" aria-selected="false" tabindex="-1" data-demo="kalender" type="button">Kalender &amp; Sync<span>Automatisch im Smartphone-Kalender</span></button>
+        <button class="tab" role="tab" id="tab-fahrtenbuch" aria-controls="demoScreen" aria-selected="false" tabindex="-1" data-demo="fahrtenbuch" type="button">Fahrtenbuch<span>Fahrten, Kilometer, Zuordnung</span></button>
+        <button class="tab" role="tab" id="tab-shop" aria-controls="demoScreen" aria-selected="false" tabindex="-1" data-demo="shop" type="button">Shop &amp; Bestellungen<span>Produkte, Orders, Versand</span></button>
+      </div>
+      <div class="demo-screen reveal" id="demoScreen" role="tabpanel" tabindex="0" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section id="berater" aria-labelledby="berater-h">
+  <div class="wrap">
+    <div class="advisor reveal">
+      <div class="advisor-grid">
+        <div>
+          <p class="kicker">Projekt-Check</p>
+          <h3 id="berater-h">Welche Lösung passt zu Ihrem Unternehmen?</h3>
+          <p>Vier kurze Fragen reichen für eine erste Einordnung. Entscheidend ist nicht, welche Software Sie möchten, sondern welches Problem gelöst werden soll. Das Ergebnis wird direkt in das Kontaktformular übernommen.</p>
+        </div>
+        <div>
+          <div class="progress" role="presentation"><span id="prog"></span></div>
+          <p class="step-count" id="stepCount" aria-live="polite">Frage 1 von 4</p>
+
+          <div id="questions">
+            <div class="question active" data-q="1">
+              <p><b>1. Was ist Ihr wichtigstes Ziel?</b></p>
+              <div class="options">
+                <button class="option" type="button" data-val="web" aria-pressed="false">Professioneller Webauftritt</button>
+                <button class="option" type="button" data-val="shop" aria-pressed="false">Produkte online verkaufen</button>
+                <button class="option" type="button" data-val="process" aria-pressed="false">Interne Abläufe digitalisieren</button>
+                <button class="option" type="button" data-val="ai" aria-pressed="false">KI sinnvoll integrieren</button>
+              </div>
+            </div>
+            <div class="question" data-q="2">
+              <p><b>2. Wie individuell soll die Lösung sein?</b></p>
+              <div class="options">
+                <button class="option" type="button" data-val="standard" aria-pressed="false">Klare Standardfunktionen reichen</button>
+                <button class="option" type="button" data-val="custom" aria-pressed="false">Individuelle Funktionen sind wichtig</button>
+                <button class="option" type="button" data-val="system" aria-pressed="false">Mehrere Bereiche verbinden</button>
+                <button class="option" type="button" data-val="open" aria-pressed="false">Noch offen</button>
+              </div>
+              <button class="back" type="button">← Eine Frage zurück</button>
+            </div>
+            <div class="question" data-q="3">
+              <p><b>3. Welche Funktion ist besonders wichtig?</b></p>
+              <div class="options">
+                <button class="option" type="button" data-val="contact" aria-pressed="false">Anfragen / Termine</button>
+                <button class="option" type="button" data-val="crm" aria-pressed="false">Kunden / Aufträge</button>
+                <button class="option" type="button" data-val="commerce" aria-pressed="false">Bestellungen / Rechnungen</button>
+                <button class="option" type="button" data-val="assistant" aria-pressed="false">KI / Wissen</button>
+              </div>
+              <button class="back" type="button">← Eine Frage zurück</button>
+            </div>
+            <div class="question" data-q="4">
+              <p><b>4. Wie möchten Sie starten?</b></p>
+              <div class="options">
+                <button class="option" type="button" data-val="small" aria-pressed="false">Klein starten, später erweitern</button>
+                <button class="option" type="button" data-val="full" aria-pressed="false">Direkt komplett aufbauen</button>
+                <button class="option" type="button" data-val="mvp" aria-pressed="false">Erst eine Pilotversion</button>
+                <button class="option" type="button" data-val="consult" aria-pressed="false">Zuerst Konzept &amp; Beratung</button>
+              </div>
+              <button class="back" type="button">← Eine Frage zurück</button>
+            </div>
+          </div>
+
+          <div class="result" id="result" tabindex="-1" aria-live="polite">
+            <p><b>Erste Einschätzung</b></p>
+            <div class="resultbox" id="resultText"></div>
+            <div class="hero-actions">
+              <a href="#kontakt" class="btn btn-primary">Ergebnis als Anfrage senden</a>
+              <button class="btn btn-ghost" id="restart" type="button">Neu starten</button>
+            </div>
+            <p class="note">Die Einschätzung ist unverbindlich und ersetzt kein Beratungsgespräch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt" aria-labelledby="kontakt-h">
+  <div class="wrap">
+    <div class="contact">
+      <div class="panel reveal">
+        <p class="kicker" data-t="kontakt.kicker">Kontakt</p>
+        <h2 id="kontakt-h" data-t="kontakt.titel">Beschreiben Sie nicht die Software. Beschreiben Sie das Problem.</h2>
+        <p style="color:var(--ink-soft)">Daraus lässt sich wesentlich besser ableiten, welche Lösung technisch und wirtschaftlich sinnvoll ist.</p>
+        <ul class="checklist">
+          <li>unverbindliche Ersteinschätzung</li>
+          <li>klare Projektstruktur</li>
+          <li>keine unnötigen Funktionen</li>
+          <li>später erweiterbar</li>
+        </ul>
+        <div class="contact-direct">
+          <div><strong data-site="firma">Hahne Digital</strong> · <span data-site="inhaber">Björn Hahne</span></div>
+          <div><span data-site="adresse">[Anschrift]</span></div>
+          <div>E-Mail: <a data-site-link="email" href="#"><span data-site="email">[E-Mail-Adresse]</span></a></div>
+          <div>Telefon: <a data-site-link="telefon" href="#"><span data-site="telefon">[Telefonnummer]</span></a></div>
+          <div class="kontakt-social"><span data-social-titel>Demnächst hier</span><span class="social-leiste" data-social></span></div>
+        </div>
+      </div>
+
+      <form class="panel reveal" id="contactForm" novalidate>
+        <div class="field">
+          <label for="name" data-t="form.name">Name / Firma</label>
+          <input id="name" name="name" autocomplete="organization" placeholder="Max Mustermann / Muster GmbH" required>
+          <span class="err" id="name-err"></span>
+        </div>
+        <div class="field">
+          <label for="email" data-t="form.email">E-Mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="name@firma.de" required>
+          <span class="err" id="email-err"></span>
+        </div>
+        <div class="field">
+          <label for="phone">Telefon <span style="font-weight:400;color:var(--ink-soft)">(optional)</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="04351 123456">
+        </div>
+        <div class="field">
+          <label for="type" data-t="form.art">Projektart</label>
+          <select id="type" name="type">
+            <option>Internetpräsenz</option>
+            <option>Shopsystem</option>
+            <option>Firmenmodul</option>
+            <option>KI-Lösung</option>
+            <option>Modul zur Miete (24 Monate)</option>
+            <option>Kombination / noch offen</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message" data-t="form.nachricht">Was möchten Sie lösen?</label>
+          <textarea id="message" name="message" placeholder="Unternehmen, Ziel, aktueller Ablauf und gewünschte Verbesserung." data-t-platzhalter="form.platzhalter" required></textarea>
+          <span class="err" id="message-err"></span>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label for="website">Bitte freilassen</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verarbeitet werden. Hinweise dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>. Es gelten unsere <a href="agb.html" data-t="footer.agb">AGB</a>.</label>
+        </div>
+        <span class="err" id="consent-err"></span>
+
+        <button class="btn btn-primary" id="submitBtn" type="submit" data-t="form.senden">Projektanfrage senden</button>
+        <div class="formstatus" id="formstatus" role="status"></div>
+        <p class="note">Ihre Angaben werden ausschließlich zur Bearbeitung der Anfrage genutzt und nicht an Dritte weitergegeben.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<footer><div class="wrap foot"><div><strong style="color:#fff;letter-spacing:.08em">HAHNE DIGITAL</strong><br>Internetpräsenzen · Shops · Firmenmodule · KI</div><div class="footlinks"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#kontakt">Kontakt</a></div></div></footer>
+<footer>
+  <div class="wrap foot">
+    <div>
+      <span class="foot-brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="17" width="6" height="30" rx="3"/><rect x="34" y="17" width="6" height="30" rx="3"/><path d="M40 19 a12.5 12.5 0 0 1 0 26" fill="none" stroke-width="6" stroke-linecap="round"/><rect class="brand-bar" x="20" y="29" width="16" height="6" rx="3"/></svg></span><strong style="letter-spacing:.08em">HAHNE DIGITAL</strong></span><br>
+      Internetpräsenzen · Shops · Firmenmodule · KI<br>
+      <span style="font-size:.85rem">© <span data-year>2026</span> <span data-site="firma">Hahne Digital</span>, <span data-site="ort">Eckernförde</span></span>
+    </div>
+    <div class="foot-social">
+      <p class="foot-social-titel" data-social-titel data-t="footer.folgen">Demnächst hier</p>
+      <div class="social-leiste" data-social></div>
+      <p class="foot-social-hinweis" data-social-hinweis></p>
+    </div>
+    <nav class="footlinks" aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="module.html">Module &amp; Preise</a>
+      <a href="agb.html" data-t="footer.agb">AGB</a>
+      <a href="datenschutz.html" data-t="footer.datenschutz">Datenschutz</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</footer>
 
-<script src="js/script.js"></script>
+<button class="totop" id="totop" type="button"><span class="visually-hidden">Nach oben</span><span aria-hidden="true">↑</span></button>
+
+<script src="assets/modules.js"></script>
+<script src="assets/domain.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/assistant-data.js"></script>
+<script src="assets/assistant-lernen.js"></script>
+<script src="assets/privatsphaere.js"></script>
+<script src="assets/assistant.js"></script>
+<script src="assets/i18n.js"></script>
 </body>
 </html>
