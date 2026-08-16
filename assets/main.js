@@ -9,9 +9,16 @@
   /* --- Mobile Navigation -------------------------------------------------- */
   var burger = $("#burger"), links = $("#navlinks");
   if (burger && links) {
-    var toggleNav = function (open) {
+    var toggleNav = function (open, fokusZurueck) {
       links.classList.toggle("open", open);
       burger.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("nav-open", open);
+      if (open) {
+        var ersterLink = links.querySelector("a");
+        if (ersterLink) ersterLink.focus();
+      } else if (fokusZurueck) {
+        burger.focus();
+      }
     };
     burger.addEventListener("click", function () {
       toggleNav(burger.getAttribute("aria-expanded") !== "true");
@@ -20,7 +27,18 @@
       if (e.target.tagName === "A") toggleNav(false);
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") toggleNav(false);
+      if (e.key === "Escape" && burger.getAttribute("aria-expanded") === "true") {
+        toggleNav(false, true);
+      }
+    });
+    // Fokus innerhalb des geöffneten mobilen Menüs halten (einfache Fokusfalle)
+    links.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab" || !links.classList.contains("open")) return;
+      var eintraege = $$("a", links);
+      if (!eintraege.length) return;
+      var erster = eintraege[0], letzter = eintraege[eintraege.length - 1];
+      if (e.shiftKey && document.activeElement === erster) { e.preventDefault(); burger.focus(); }
+      else if (!e.shiftKey && document.activeElement === letzter) { e.preventDefault(); erster.focus(); }
     });
   }
 
@@ -350,9 +368,13 @@
       status.classList.add("show");
     };
 
+    var wirdGesendet = false;
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      if ($("#website") && $("#website").value) return;      // Spam-Falle
+      if (wirdGesendet) return;                                // doppeltes Absenden verhindern
+      var honeypot = $("#website") ? $("#website").value : "";
+      if (honeypot) return;                                    // Spam-Falle
       if (!validate()) {
         say("Bitte prüfen Sie die markierten Felder.");
         var firstBad = $('[aria-invalid="true"]');
@@ -365,13 +387,16 @@
         email: $("#email").value.trim(),
         telefon: $("#phone") ? $("#phone").value.trim() : "",
         projektart: $("#type").value,
-        nachricht: $("#message").value.trim()
+        nachricht: $("#message").value.trim(),
+        consent: !!($("#consent") && $("#consent").checked),
+        website: honeypot
       };
 
       var endpoint = window.SITE && window.SITE.formEndpoint;
       var btn = $("#submitBtn");
 
       if (endpoint) {
+        wirdGesendet = true;
         btn.disabled = true;
         btn.textContent = "Wird gesendet …";
         fetch(endpoint, {
@@ -379,13 +404,21 @@
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: JSON.stringify(data)
         }).then(function (r) {
-          if (!r.ok) throw new Error(r.status);
+          return r.json().catch(function () { return {}; }).then(function (payload) {
+            if (!r.ok || !payload || payload.ok !== true) {
+              throw new Error((payload && payload.error) || ("HTTP " + r.status));
+            }
+          });
+        }).then(function () {
           form.reset();
           say("Vielen Dank – Ihre Anfrage ist eingegangen. Sie erhalten in der Regel innerhalb eines Werktags eine Rückmeldung.");
-        }).catch(function () {
-          say("Der Versand hat nicht funktioniert. Schreiben Sie gern direkt an " +
+        }).catch(function (err) {
+          var grund = err && err.message ? err.message : "";
+          say((grund ? grund + " " : "Der Versand hat nicht funktioniert. ") +
+              "Schreiben Sie gern direkt an " +
               '<a href="mailto:' + window.SITE.email + '">' + window.SITE.email + "</a>.");
         }).then(function () {
+          wirdGesendet = false;
           btn.disabled = false;
           btn.textContent = "Projektanfrage senden";
         });

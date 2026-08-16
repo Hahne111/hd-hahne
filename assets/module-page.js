@@ -336,52 +336,6 @@
     leerenBtn.addEventListener("click", function () { auswahl = []; render(); rechner(); });
   }
 
-  /* --- Beispielansicht ----------------------------------------------------- */
-  var dlg = $("#demoDialog");
-
-  function zeigeDemo(id) {
-    var d = DEMOS[id];
-    var m = MODULE.filter(function (x) { return x.id === id; })[0];
-    if (!d || !dlg) return;
-
-    $("#demoKat").textContent = katName(m.kategorie);
-    $("#demoTitel").textContent = d.titel;
-    $("#demoModul").textContent = m.name + " · " + (modell === "miete" && m.miete > 0
-      ? euro(m.miete) + " / Monat zur Miete · " + MIETE.mindestlaufzeit +
-        " Monate Laufzeit · einmalig " + euro(MIETE.einrichtung) + " Einrichtung"
-      : (m.preis > 0 ? "ab " + euro(m.preis) + " zum Kauf" : euro(m.monat) + " / Monat"));
-    $("#demoFenster").textContent = d.fenster;
-
-    $("#demoInhalt").innerHTML =
-      '<div class="stats">' + d.stats.map(function (st) {
-        return '<div class="stat"><b>' + st[0] + "</b>" + st[1] + "</div>";
-      }).join("") + "</div>" +
-      '<div class="table"><div class="row" style="font-weight:700;color:var(--ink-soft);font-size:.8rem">' +
-        d.spalten.map(function (c) { return "<span>" + c + "</span>"; }).join("") + "</div>" +
-        d.zeilen.map(function (r) {
-          return '<div class="row"><b>' + r[0] + "</b><span>" + r[1] +
-            '</span><span class="status">' + r[2] + "</span></div>";
-        }).join("") + "</div>";
-
-    $("#demoErklaerung").innerHTML = "<b>Was Sie hier sehen</b><p>" + d.erklaerung + "</p>";
-
-    var hinzu = $("#demoHinzufuegen");
-    var drin = auswahl.indexOf(id) > -1;
-    hinzu.textContent = drin ? "Bereits in der Auswahl" : "Modul zur Auswahl hinzufügen";
-    hinzu.disabled = drin;
-    hinzu.onclick = function () {
-      if (auswahl.indexOf(id) === -1) auswahl.push(id);
-      render(); rechner(); dlg.close();
-    };
-
-    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
-  }
-
-  if (dlg) {
-    $("#demoSchliessen").addEventListener("click", function () { dlg.close(); });
-    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
-  }
-
   /* Aus der Demoseite übernommenes Modul vormerken */
   (function () {
     var id = new URLSearchParams(window.location.search).get("vormerken");

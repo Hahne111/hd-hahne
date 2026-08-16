@@ -17,7 +17,7 @@
   --accent:#0e6f7a;       /* Petrol – Hauptakzent */
   --accent-dark:#0a545d;
   --accent-soft:#e3f0f1;  /* Akzentfläche */
-  --warm:#b3701f;         /* Sandbraun – Auszeichnungen */
+  --warm:#93590d;         /* Sandbraun – Auszeichnungen (kontrastgeprüft, ≥4.5:1 auf hellem Grund) */
   --warm-soft:#fbf1e3;
   --gruen:#2f7d4f;
   --shadow:0 18px 44px rgba(18,32,42,.09);
@@ -157,6 +157,12 @@ section{padding:80px 0}
 .statement blockquote{margin:0;font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,3rem);
   line-height:1.28;letter-spacing:-.02em;max-width:960px;font-weight:400}
 .statement em{color:var(--accent);font-style:normal}
+
+/* Über uns ------------------------------------------------------------ */
+.ueberuns-info{max-width:760px;margin-top:28px;display:grid;gap:14px}
+.ueberuns-info p{color:var(--ink-soft);margin:0}
+.ueberuns-info b{color:var(--ink)}
+.ueberuns-referenzen{padding-top:14px;border-top:1px solid var(--line);font-size:.9rem}
 
 /* Pakete ------------------------------------------------------------------ */
 .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
@@ -320,6 +326,8 @@ footer{border-top:1px solid var(--line);padding:40px 0 52px;color:var(--ink-soft
 
 /* Erklärblock */
 .erklaer{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.erklaer-vier{grid-template-columns:repeat(4,1fr)}
+.erklaer-zwei{grid-template-columns:repeat(2,1fr)}
 .erklaer-karte{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;
   box-shadow:var(--shadow)}
 .erklaer-nr{width:34px;height:34px;border-radius:10px;background:var(--accent);color:#fff;
@@ -491,13 +499,28 @@ footer{border-top:1px solid var(--line);padding:40px 0 52px;color:var(--ink-soft
   .rechner{position:static}
   .rechner-liste{max-height:none}
 }
+body.nav-open{overflow:hidden}
+
+/* Touchflächen ab Tablet-Breite: mindestens 44 × 44 Pixel ----------------- */
+@media(max-width:980px){
+  .chip,.modul-btn,.demo-btn,.anleitung-btn,.modell-btn,.dom-alt,.demo-eintrag,
+  .demo-app-btn,.demo-chip,.demo-sort,.demo-loeschen,.kia-chip,.kia-thema,
+  .social-link,.faq summary,.sprach-liste button{min-height:44px}
+  .chip,.modul-btn,.demo-btn,.anleitung-btn,.modell-btn,.dom-alt,.kia-chip,
+  .kia-thema,.demo-loeschen{display:inline-flex;align-items:center}
+  .demo-eintrag,.demo-app-btn,.demo-chip,.demo-sort{display:flex;align-items:center}
+  .burger,.totop,.kia-zurueck,.kia-zu,.demo-schliessen,.kia-mikro,.kia-ton,
+  .kia-senden,.priv-schalter,.dom-entfernen{min-width:44px;min-height:44px}
+  .consent input{width:24px;height:24px}
+}
 @media(max-width:980px){
   .hero-grid,.section-head,.advisor-grid,.contact,.demo-wrap{grid-template-columns:1fr}
   .hero{padding-top:56px}
-  .services,.packages,.erklaer,.ablauf,.begriffe{grid-template-columns:1fr}
+  .services,.packages,.erklaer,.erklaer-vier,.erklaer-zwei,.ablauf,.begriffe{grid-template-columns:1fr}
   .burger{display:grid}
   .links{position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--panel);
-    border-bottom:1px solid var(--line);padding:8px 23px 20px;display:none;box-shadow:var(--shadow)}
+    border-bottom:1px solid var(--line);padding:8px 23px 20px;display:none;box-shadow:var(--shadow);
+    max-height:calc(100vh - 80px);overflow-y:auto}
   .links.open{display:flex}
   .links a{padding:15px 0;border-bottom:1px solid var(--line-soft);font-size:1rem}
   .links a:after{display:none}
@@ -623,7 +646,7 @@ body[data-modell="miete"] .nur-miete{display:inline}
 /* ==========================================================================
    Hilfe-Fenster: Assistent und Live-Chat
    ========================================================================== */
-.kia{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;flex-direction:column;
+.kia{position:fixed;right:22px;bottom:22px;z-index:85;display:flex;flex-direction:column;
   align-items:flex-end;gap:10px}
 
 /* Aufmerksamkeitshinweis */
@@ -746,6 +769,9 @@ body.kia-offen .kia-knopf,body.kia-offen .kia-lockruf{display:none}
 @keyframes kiapuls{0%,100%{box-shadow:0 0 0 0 rgba(179,38,30,.45)}60%{box-shadow:0 0 0 7px rgba(179,38,30,0)}}
 .kia-fuss{margin:0;padding:0 14px 11px;font-size:.7rem;color:var(--ink-soft);background:var(--panel);
   text-align:center}
+.kia-reset{border:0;background:none;padding:2px;color:var(--ink-soft);text-decoration:underline;
+  font-size:inherit;cursor:pointer;min-height:24px}
+.kia-reset:hover{color:var(--accent)}
 
 .totop{right:auto;left:22px}
 
@@ -1035,7 +1061,10 @@ body.rtl .checklist li:before,body.rtl .modul-punkte li:before{left:auto;right:0
   .demo-liste{position:static;max-height:none}
   .demo-app-kennzahlen{grid-template-columns:1fr}
   .demo-zeile{grid-template-columns:1fr;gap:3px}
-  .demo-titelzeile{display:none}
+  /* Kopfzeile bleibt sichtbar: nur sie enthält die Sortierknöpfe. Statt der
+     dreispaltigen Ausrichtung an den (hier gestapelten) Datenzeilen wird sie
+     zur umbrechenden Werkzeugleiste. */
+  .demo-titelzeile{display:flex;flex-wrap:wrap;gap:4px 16px}
   .demo-preisbox{width:100%}
   .demo-preisbox div{flex:1}
 }

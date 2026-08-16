@@ -28,7 +28,7 @@ window.SITE = {
   /* --- Kontakt ------------------------------------------------------------ */
   telefon:      "0176 20204188",
   email:        "service@hd-hahne.de",
-  domain:       "www.hahne-digital.de",
+  domain:       "www.hd-hahne.de",
 
   /* --- Steuer / Register --------------------------------------------------
      ustId:  USt-IdNr. nach §27a UStG. Wenn keine vorhanden ist, hier "" ein-
@@ -46,10 +46,18 @@ window.SITE = {
 
   /* --- Kontaktformular ----------------------------------------------------
      formEndpoint leer lassen = Anfrage wird im E-Mail-Programm des Besuchers
-     geöffnet (funktioniert sofort, ohne Server).
-     Sobald ein Formular-Dienst oder eigenes Backend vorhanden ist, hier die
-     URL eintragen (z. B. https://formspree.io/f/xxxxxxx) – dann wird die
-     Anfrage direkt versendet. Bei einem externen Dienst muss dieser in der
+     geöffnet (funktioniert sofort, ohne Server, aber weniger zuverlässig).
+
+     Für echten serverseitigen Versand liegt eine fertige Funktion bereit:
+     functions/api/contact.js (Cloudflare-Pages-Function mit serverseitiger
+     Prüfung, Honeypot und Rate-Begrenzung). Sie wird erst aktiv, wenn
+       1. die Seite über Cloudflare Pages statt reinem FTP/SFTP läuft,
+       2. dort die Umgebungsvariablen RESEND_API_KEY, CONTACT_TO und
+          CONTACT_FROM gesetzt sind (niemals im Repository!),
+       3. hier "/api/contact" eingetragen wird.
+     Details siehe README, Abschnitt "Kontaktformular – Server-Setup".
+     Wird stattdessen ein externer Formular-Dienst genutzt (z. B.
+     https://formspree.io/f/xxxxxxx), muss dieser in der
      Datenschutzerklärung ergänzt werden.
   ------------------------------------------------------------------------- */
   formEndpoint: "",

@@ -9,3 +9,10 @@ Thumbs.db
 
 # Archive und lokale Kopien
 *.zip
+
+# Node/Playwright (Testsuite)
+node_modules/
+test-results/
+playwright-report/
+/blob-report/
+/playwright/.cache/

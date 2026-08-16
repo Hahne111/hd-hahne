@@ -139,13 +139,13 @@
           '<input id="domEingabe" type="text" autocomplete="off" spellcheck="false" ' +
             'placeholder="ihre-firma.de">' +
         "</div>" +
-        '<button class="btn btn-primary dom-knopf" type="submit">Verfügbarkeit prüfen</button>' +
+        '<button class="btn btn-primary dom-knopf" type="submit">Technische Vorprüfung starten</button>' +
       "</form>" +
       '<p class="dom-hinweis" id="domHinweis">' +
         (S.domainEndpoint
-          ? "Die Prüfung erfolgt über unseren Server."
-          : "Für die Prüfung wird die eingegebene Domain an den DNS-Dienst von Cloudflare gesendet. " +
-            "Wir speichern nichts davon.") +
+          ? "Verbindliche Prüfung über unseren Server (RDAP/WHOIS beim Registrar)."
+          : "Dies ist nur eine <b>technische Vorprüfung</b> per DNS-Abfrage, keine Registrierungsauskunft. " +
+            "Dafür wird die eingegebene Domain an den DNS-Dienst von Cloudflare gesendet – wir speichern nichts davon.") +
       "</p>" +
       '<div class="dom-ergebnis" id="domErgebnis"></div>' +
       '<div class="dom-alternativen" id="domAlternativen"></div>';
@@ -222,10 +222,11 @@
             "Diese Adresse wird schon genutzt. Probieren Sie eine andere Schreibweise oder eine andere Endung.");
           alternativenZeigen(d);
         } else if (r.stand === "frei") {
-          melden("frei", d.anzeige + " ist voraussichtlich frei",
+          melden("frei",
+            r.genau ? d.anzeige + " ist frei" : "Keine aktive Nutzung erkannt",
             r.genau
               ? "Die Domain ist aktuell nicht registriert. Wir sichern sie für Sie, sobald Sie den Auftrag erteilen."
-              : "Für diese Adresse bestehen keine Einträge. Das spricht deutlich für „frei“ – die endgültige Bestätigung erhalten Sie mit unserem Angebot, da nur der Registrar verbindlich Auskunft gibt.",
+              : "Für " + d.anzeige + " bestehen keine DNS-Einträge – das ist nur eine technische Vorprüfung, keine Registrierungsauskunft. Die endgültige Verfügbarkeit muss beim Registrar bestätigt werden. Wir prüfen das verbindlich, sobald Sie die Domain in Ihr Angebot aufnehmen.",
             d.anzeige);
           alternativenZeigen(d);
         } else {

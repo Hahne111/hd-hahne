@@ -298,6 +298,12 @@
 
     if (e.target.closest("[data-schliessen]")) { gewaehlt = -1; tabelleZeichnen(); return; }
     if (e.target.closest("[data-loeschen]")) {
+      var eintrag = daten[gewaehlt];
+      if (!eintrag) return;
+      var sicher = window.confirm(
+        "Eintrag „" + eintrag[0] + "“ wirklich löschen? Das lässt sich nur über „Zurücksetzen“ rückgängig machen."
+      );
+      if (!sicher) return;
       daten.splice(gewaehlt, 1);
       gewaehlt = -1;
       tabelleZeichnen();

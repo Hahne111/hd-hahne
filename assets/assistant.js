@@ -61,7 +61,7 @@
     roh.forEach(function (w) {
       tokens.push(w);
       var s = stamm(w);
-      if (s.length > 2 && s !== w) tokens.push(s);
+      if (s.length > 2 && s !== w && STOPP.indexOf(s) === -1) tokens.push(s);
       if (SYNONYME[w]) tokens.push(SYNONYME[w]);
       if (SYNONYME[s]) tokens.push(SYNONYME[s]);
     });
@@ -113,7 +113,7 @@
       // Einzelbegriffe und Abkürzungen aus dem Modulnamen (CRM, DMS, POS, PWA …)
       m.name.split(/[^A-Za-zÄÖÜäöüß0-9]+/).filter(Boolean).forEach(function (teil) {
         var t = normalisieren(teil);
-        if (t.length < 2) return;
+        if (t.length < 2 || STOPP.indexOf(t) > -1) return;   // Bindewörter im Modulnamen (z. B. "bei") sind keine Abkürzung
         var kurz = t.length <= 4;   // Abkürzung
         if (tokens.indexOf(t) > -1 || (kurz && kompakt.indexOf(t) > -1)) punkte += kurz ? 8 : 5;
         var st = stamm(t);
@@ -152,7 +152,7 @@
     var m = modulTreffer(frage);
     var wissenPunkte = treffer.length ? treffer[0].punkte : 0;
 
-    if (m.modul && (m.punkte >= 8 || m.punkte >= wissenPunkte)) {
+    if (m.modul && m.punkte > wissenPunkte) {
       return { art: "modul", modul: m.modul, antwort: modulAntwort(m.modul).antwort,
                link: modulAntwort(m.modul).link };
     }
@@ -247,7 +247,8 @@
           '<button class="kia-ton" id="kiaTon" type="button" aria-pressed="false" title="Antworten vorlesen" hidden>🔈</button>' +
           '<button class="kia-senden" type="submit" aria-label="Frage senden">→</button>' +
         "</form>" +
-        '<p class="kia-fuss">Antwortet nur mit Inhalten dieser Website · läuft in Ihrem Browser</p>' +
+        '<p class="kia-fuss">Antwortet nur mit Inhalten dieser Website · läuft in Ihrem Browser · ' +
+          '<button class="kia-reset" id="kiaReset" type="button">Verlauf zurücksetzen</button></p>' +
       "</div>" +
 
       /* Live-Chat */
@@ -290,7 +291,7 @@
     aktuell = name;
     Object.keys(ansichten).forEach(function (k) { ansichten[k].hidden = k !== name; });
     zurueck.hidden = name === "start";
-    titelEl.textContent = name === "assistent" ? "Assistent"
+    titelEl.textContent = name === "assistent" ? "Website-Assistent"
                         : name === "chat" ? "Live-Chat" : "Wie können wir helfen?";
     statusEl.textContent = name === "assistent" ? "Antwortet aus den Seiteninhalten"
                         : name === "chat" ? (erreichbar() ? "Jetzt besetzt" : "Außerhalb der Zeiten")
@@ -417,6 +418,17 @@
     var t = feld.value.trim();
     if (t) stellen(t);
   });
+
+  /* --- Verlauf zurücksetzen ---------------------------------------------------- */
+  var resetKnopf = $("kiaReset");
+  if (resetKnopf) {
+    resetKnopf.addEventListener("click", function () {
+      verlauf.innerHTML = "";
+      vorschlagBox.innerHTML = "";
+      begruessung();
+      feld.focus();
+    });
+  }
 
   /* --- Sprachausgabe --------------------------------------------------------- */
   var tonKnopf = $("kiaTon"), tonAn = false, synth = window.speechSynthesis;

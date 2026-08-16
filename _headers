@@ -1,0 +1,31 @@
+# ==========================================================================
+# HAHNE DIGITAL – Sicherheits-Header
+# --------------------------------------------------------------------------
+# Wird automatisch ausgewertet, sobald die Website über Cloudflare Pages
+# oder Netlify ausgeliefert wird (beide unterstützen dieses Dateiformat).
+# Bei klassischem FTP/SFTP-Hosting bleibt diese Datei wirkungslos – dort
+# müssen dieselben Header stattdessen in der Server- bzw. .htaccess-
+# Konfiguration des Hosters gesetzt werden.
+# ==========================================================================
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(self), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-9YYOtLhrYV02kRxCILSE7LFC8+Ry7Q2E2kLgyMnx4K4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://cloudflare-dns.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+
+# Hinweise:
+# 1. Wird in assets/site-config.js ein domainEndpoint, chatEndpoint oder
+#    lernEndpoint mit einer EXTERNEN Adresse eingetragen, muss deren Origin
+#    hier zusätzlich unter connect-src ergänzt werden – sonst blockiert der
+#    Browser die Anfrage.
+# 2. Der sha256-Wert in script-src erlaubt ausschließlich das eine
+#    unveränderte JSON-LD-Skript in index.html (strukturierte Daten für
+#    Suchmaschinen). Wird dessen Inhalt in index.html bearbeitet, muss der
+#    Hash neu berechnet werden, sonst blockieren Browser das Skript:
+#      openssl dgst -sha256 -binary datei.json | openssl base64 -A
+#    (mit dem Inhalt zwischen den <script>-Tags als "datei.json").
+# 3. style-src erlaubt 'unsafe-inline', weil einzelne Seiten style="…"-
+#    Attribute nutzen. Sauberer wäre es, diese in style.css zu verschieben.

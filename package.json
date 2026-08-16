@@ -1,0 +1,13 @@
+{
+  "name": "hahne-digital-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Statische Website Hahne Digital – Testsuite",
+  "scripts": {
+    "serve": "python3 -m http.server 4173",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}

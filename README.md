@@ -17,31 +17,86 @@ Web-Verzeichnis hochladen – fertig.
     assets/modules.js     Modulkatalog inkl. Kauf- und Mietpreise
     assets/module-demos.js Beispielansichten der Module
     assets/module-page.js Katalogseite: Filter, Auswahl, Kostenschätzung
-    assets/assistant-data.js  Wissensbasis des Seiten-Assistenten
-    assets/assistant.js   Seiten-Assistent, Sprachfunktion und Live-Chat
+    assets/assistant-data.js  Wissensbasis des Website-Assistenten
+    assets/assistant.js   Website-Assistent, Sprachfunktion und Live-Chat
+    functions/api/contact.js  Serverseitiger Formularversand (Cloudflare Pages Function,
+                           siehe Abschnitt "Kontaktformular – Server-Setup")
 
 ## Vor dem Livegang – Checkliste
 
-1. `assets/site-config.js` ausfüllen: es fehlen noch E-Mail-Adresse,
-   USt-IdNr. bzw. Steuernummer und Hosting-Anbieter.
-   Firma, Gesellschafter, Anschrift und Telefon sind bereits eingetragen.
-   Rechtsform steht auf GbR (zwei Betreiber) – bei abweichender Struktur
-   dort korrigieren.
+1. `assets/site-config.js` ausfüllen: es fehlen noch USt-IdNr. bzw.
+   Steuernummer sowie Hosting-Anbieter und dessen Anschrift (Felder in
+   eckigen Klammern, im Impressum/in der Datenschutzerklärung rot markiert).
+   Firma, Gesellschafter, Anschrift, Telefon, E-Mail-Adresse und Domain sind
+   bereits eingetragen. Rechtsform steht auf GbR (zwei Betreiber) – bei
+   abweichender Struktur dort korrigieren.
    Kleinunternehmer nach § 19 UStG? Dann `kleinunternehmer: true` setzen –
    Impressum und Preishinweis passen sich automatisch an.
-2. Domain prüfen: In `index.html`, `impressum.html`, `datenschutz.html`,
-   `robots.txt` und `sitemap.xml` steht `www.hahne-digital.de`. Falls eine
-   andere Domain genutzt wird, dort ersetzen.
+2. Domain prüfen: Verbindliche Domain ist `www.hd-hahne.de`, so eingetragen
+   in `assets/site-config.js`, `index.html`, `impressum.html`,
+   `datenschutz.html`, `robots.txt` und `sitemap.xml`. Falls eine andere
+   Domain genutzt wird, dort ersetzen.
 3. Die Hinweiskästen in `impressum.html`, `datenschutz.html` und
    `agb.html` löschen (Block mit `class="hinweis"`).
 4. SSL-Zertifikat (https) beim Hoster aktivieren.
 5. Auftragsverarbeitungsvertrag (AVV) mit dem Hoster abschließen.
-6. Optional: Formular-Dienst eintragen (`formEndpoint` in der Konfiguration).
-   Ohne Eintrag öffnet das Formular das E-Mail-Programm des Besuchers – das
-   funktioniert sofort, aber nicht auf jedem Gerät gleich zuverlässig.
-   Wird ein externer Dienst genutzt, muss er in der Datenschutzerklärung
-   unter Punkt 5 ergänzt werden.
+6. Kontaktformular: siehe Abschnitt "Kontaktformular – Server-Setup" unten.
+   Ohne Einrichtung öffnet das Formular weiterhin das E-Mail-Programm des
+   Besuchers – das funktioniert sofort, aber nicht auf jedem Gerät gleich
+   zuverlässig, und es gibt keine echte Zustellbestätigung.
 7. Rechtstexte vor dem Livegang anwaltlich prüfen lassen.
+
+## Kontaktformular – Server-Setup
+
+Diese Website ist als reine statische Seite ohne eigenen Server aufgebaut
+(siehe Kopf dieser Datei). Ein echter, serverseitiger Formularversand
+braucht deshalb zwingend eine Hosting-Umgebung, die Server-Code ausführen
+kann – klassisches FTP/SFTP-Webspace kann das nicht. Vorbereitet ist die
+Variante **Cloudflare Pages** (kostenloser Einstiegsplan, keine Kreditkarte
+nötig für den Basisbetrieb), weil sie sich am nächsten am bisherigen
+"Dateien hochladen"-Ablauf verhält. Genau diese Schritte fehlen noch, bevor
+`functions/api/contact.js` aktiv wird:
+
+1. **Hosting wechseln oder ergänzen.** Ein Cloudflare-Konto anlegen, unter
+   "Workers & Pages" ein neues Pages-Projekt erstellen und entweder mit
+   diesem Git-Repository verbinden (empfohlen, dann baut Cloudflare bei
+   jedem Push automatisch neu) oder den Projektordner manuell hochladen.
+   Anschließend die Domain `hd-hahne.de` in Cloudflare als benutzerdefinierte
+   Domain einrichten (DNS-Umstellung beim aktuellen Registrar erforderlich).
+2. **E-Mail-Versanddienst einrichten.** Ein Konto bei einem
+   Transaktions-E-Mail-Dienst anlegen (die Funktion ist für resend.com
+   vorbereitet, ein Wechsel auf einen anderen Dienst mit HTTP-API ist mit
+   wenigen Zeilen in `functions/api/contact.js` möglich). Dort die
+   Absenderdomain `hd-hahne.de` verifizieren (SPF/DKIM-Einträge im DNS, das
+   erledigt Cloudflare größtenteils automatisch) und einen API-Schlüssel
+   erzeugen.
+3. **Umgebungsvariablen im Cloudflare-Projekt setzen** (Dashboard →
+   Projekt → Settings → Environment variables, **niemals im Repository**):
+   - `RESEND_API_KEY` – der erzeugte API-Schlüssel
+   - `CONTACT_TO` – Empfängeradresse, z. B. `service@hd-hahne.de`
+   - `CONTACT_FROM` – verifizierte Absenderadresse, z. B.
+     `formular@hd-hahne.de`
+4. **Rate-Begrenzung aktivieren (empfohlen).** Unter "Workers & Pages" →
+   "KV" einen Namespace anlegen (z. B. `hd-hahne-ratelimit`) und ihn im
+   Pages-Projekt unter Settings → Functions → KV namespace bindings als
+   `RATE_LIMIT_KV` einbinden. Ohne diesen Schritt funktioniert der Versand
+   weiterhin, nur ohne serverseitige Begrenzung der Anfragen je Absender.
+5. **Endpoint aktivieren.** In `assets/site-config.js` bei `formEndpoint`
+   den Wert `/api/contact` eintragen und veröffentlichen.
+6. **Datenschutzerklärung ergänzen.** Sobald der E-Mail-Dienst produktiv
+   läuft, in `datenschutz.html` unter Ziffer 5 den tatsächlich genutzten
+   Anbieter (Name, Sitz, Link zur Datenschutzerklärung des Anbieters)
+   ergänzen und prüfen, ob mit ihm ein AVV nach Art. 28 DSGVO nötig ist.
+7. **Testen, bevor live geschaltet wird:** eine Testanfrage senden, prüfen,
+   ob die E-Mail ankommt, ob eine zweite, schnelle Anfrage abgelehnt wird
+   (Rate-Begrenzung) und ob eine absichtlich fehlerhafte Anfrage (z. B. ohne
+   Zustimmung) eine verständliche Fehlermeldung statt einer stillen
+   "Erfolg"-Meldung zeigt.
+
+Bis diese Schritte durchgeführt sind, bleibt `formEndpoint` leer und das
+Formular öffnet weiterhin ehrlich das E-Mail-Programm des Besuchers – es
+wird zu keinem Zeitpunkt ein erfolgreicher Versand vorgetäuscht, der nicht
+stattgefunden hat.
 
 ## Seiten-Assistent
 
@@ -282,3 +337,59 @@ Server geht. Abschalten lässt sich beides über `sprachEingabe` und
 Es werden keine Cookies gesetzt, keine Analyse-Tools und keine externen
 Schriftarten oder CDNs geladen. Alle Dateien kommen vom eigenen Server –
 dadurch ist kein Cookie-Banner erforderlich.
+
+## Lokal starten
+
+Die Website ist reines HTML/CSS/JS ohne Build-Schritt. Zum Ansehen reicht
+ein beliebiger statischer Webserver im Projektordner, zum Beispiel:
+
+    python3 -m http.server 4173
+
+Anschließend `http://localhost:4173/index.html` im Browser öffnen. Ein
+Öffnen der Dateien direkt per `file://` funktioniert nicht zuverlässig, da
+Skripte dann teils durch die Sicherheitsrichtlinien des Browsers blockiert
+werden.
+
+## Automatisierte Tests (Playwright)
+
+Im Ordner `tests/` liegt eine Playwright-Testsuite, die die wichtigsten
+Abläufe der Website automatisiert prüft: Navigation, mobiles Menü,
+Projekt-Check, Kontaktformular (Validierung sowie erfolgreicher und
+fehlerhafter Versand – beides über abgefangene Netzwerkantworten, ohne
+echten Versand), Domainprüfung, Website-Assistent, Sprachumschaltung,
+Datenschutzdialog, Modulkatalog, Moduldemos sowie Angebot/PDF. Getestet wird
+bei den Bildschirmbreiten 390, 768, 1024 und 1440 Pixel. Es werden zu keinem
+Zeitpunkt echte Nachrichten, E-Mails oder WhatsApp-Nachrichten versendet.
+
+Einmalig einrichten:
+
+    npm install
+
+Tests ausführen (startet den lokalen Server automatisch):
+
+    npm test
+
+Ergebnisse einzeln nachvollziehen (Trace-Viewer, Screenshots bei
+Fehlschlägen):
+
+    npx playwright show-report
+
+Nur eine Bildschirmbreite testen, z. B. Smartphone:
+
+    npx playwright test --project=mobile-390
+
+## Deployment
+
+Die einfachste Variante bleibt klassisches Hosting: Alle Dateien außer
+`tests/`, `node_modules/`, `package.json`, `package-lock.json` und
+`playwright.config.js` per FTP/SFTP hochladen (diese vier braucht nur die
+Testsuite, nicht die Website selbst). `functions/api/contact.js` und
+`_headers` werden bei reinem FTP/SFTP-Hosting ignoriert und bleiben
+wirkungslos, bis auf eine Plattform mit Funktionen-Unterstützung
+umgestellt wird (siehe „Kontaktformular – Server-Setup" oben) – die Website
+funktioniert bis dahin unverändert mit dem mailto-Fallback weiter.
+
+Für echten Formularversand und vorbereitete Sicherheits-Header: Deployment
+über Cloudflare Pages wie im Abschnitt „Kontaktformular – Server-Setup"
+beschrieben (Git-Repository verbinden oder Ordner hochladen, danach
+automatischer Neubau bei jeder Änderung).

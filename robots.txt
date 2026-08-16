@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.hahne-digital.de/sitemap.xml
+Sitemap: https://www.hd-hahne.de/sitemap.xml
